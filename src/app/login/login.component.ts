@@ -7,16 +7,21 @@ import { ActivatedRoute } from '@angular/router';
   `],
   template: `
     <h1>Login</h1>
-    <div>
-      For hot module reloading run
-      <pre>npm run start:hmr</pre>
-    </div>
-    <div>
-      <h3>
-        patrick@AngularClass.com
-      </h3>
-    </div>
-    <pre>this.localState = {{ localState | json }}</pre>
+    <form action="action_page.php">
+  
+
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+<br>
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+<br>
+    <button type="submit">Login</button>
+    
+ 
+</form>
+	
+	
   `
 })
 export class LoginComponent {
