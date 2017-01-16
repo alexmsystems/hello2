@@ -19,6 +19,7 @@ import { CourcesComponent } from './cources';
 import { AboutComponent } from './about';
 import { LoginComponent } from './login';
 import { NoContentComponent } from './no-content';
+import { ItemComponent } from './items';
 import { XLarge } from './home/x-large';
 
 // Application wide providers
@@ -44,6 +45,7 @@ type StoreType = {
     CourcesComponent,    
     HomeComponent,
     LoginComponent,
+    ItemComponent,
     NoContentComponent,
     XLarge
   ],
