@@ -1,7 +1,8 @@
 import {Cource} from './cource';
 
 export class DataService{
- 
+    private newId: number;
+    private tempCource: Cource;
     private data: Cource[] = [
         {id: 1 , name: "Video Cource 1", courceDate: "01.01.2011", description: "Couurce 1 description", duration: 100},
         {id: 2 ,  name: "Video Cource 2", courceDate: "01.02.2011", description: "Couurce 2 description", duration: 200},
@@ -16,8 +17,10 @@ export class DataService{
          
         return this.data[id-1];
     }
-    addData(name: string, courceDate: number){
-         
-        this.data.push(new Cource(name, courceDate));
+    addData(name: string, courceDate: string, description: string, duration: number ){        
+
+        this.tempCource = this.data[this.data.length-1];
+        this.newId = this.tempCource.id+1;
+        this.data.push(new Cource(this.newId,name, courceDate,description,duration));
     }
 }

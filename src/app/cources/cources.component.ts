@@ -21,7 +21,7 @@ import {Cource} from '../cource';
                 <tr *ngFor="let item of items">
                     <td>{{item.name}}</td>
                     <td>{{item.courceDate}}</td>
-                    <td><a href="https://alexmsystems.github.io/hello2/#/item/{{item.id}}">Detail {{item.id}}</a> </td>
+                    <td><a [routerLink]=" ['./' , item.id] " >Detail {{item.id}}</a></td>
                 </tr>
             </tbody>
         </table>
@@ -48,6 +48,4 @@ export class CourcesComponent {
     console.log('hello `Cources` component');
 
   }
-
-
 }
