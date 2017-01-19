@@ -1,5 +1,7 @@
+import {Injectable} from '@angular/core';
 import {Cource} from './cource';
 
+@Injectable()
 export class DataService{
     private newId: number;
     private tempCource: Cource;

@@ -17,7 +17,6 @@ import {Cource} from '../cource';
      <tr><td>Продолжительность</td><td>{{courceItem.duration}}</td></tr>     
      </table>	
   `,
-   providers: [DataService]
 })
 export class ItemComponent implements OnDestroy { 
      

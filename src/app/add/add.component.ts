@@ -19,7 +19,7 @@ import { NgForm} from '@angular/forms';
                         <input type="submit" [disabled]="myForm.invalid" class="btn btn-default" value="Отправить" />
                     </div>
                 </form>`,
-   providers: [DataService]
+   
 })
 export class AddComponent 
 
