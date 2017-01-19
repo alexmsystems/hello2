@@ -26,7 +26,6 @@ import {Cource} from '../cource';
             </tbody>
         </table>
   `,
-   providers: [DataService]
 })
 export class CourcesComponent {
   localState: any;

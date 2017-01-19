@@ -21,10 +21,13 @@ import { NoContentComponent } from './no-content';
 import { ItemComponent } from './items';
 
 
+import {DataService} from './main.service';
+
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
+  AppState,
+  DataService,
 ];
 
 type StoreType = {
