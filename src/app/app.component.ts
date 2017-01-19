@@ -21,19 +21,7 @@ import { AppState } from './app.service';
         <a [routerLink]=" ['./'] ">
           Index
         </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./home'] ">
-          Home
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./detail'] ">
-          Detail
-        </a>
-      </span>
+      </span>      
       |
       <span>
         <a [routerLink]=" ['./cources'] ">
@@ -58,16 +46,11 @@ import { AppState } from './app.service';
       <router-outlet></router-outlet>
     </main>
 
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
-    <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>      
-    </footer>
+    <footer> Cources 2017    </footer>
   `
 })
 export class AppComponent {  
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
 
   constructor(
     public appState: AppState) {

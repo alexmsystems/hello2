@@ -14,13 +14,12 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
 import { CourcesComponent } from './cources';
 import { AddComponent } from './add';
 import { LoginComponent } from './login';
 import { NoContentComponent } from './no-content';
 import { ItemComponent } from './items';
-import { XLarge } from './home/x-large';
+
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -42,12 +41,12 @@ type StoreType = {
   declarations: [
     AppComponent,
     AddComponent,
-    CourcesComponent,    
-    HomeComponent,
+    CourcesComponent, 
+
     LoginComponent,
     ItemComponent,
     NoContentComponent,
-    XLarge
+
   ],
   imports: [ // import Angular's modules
     BrowserModule,
