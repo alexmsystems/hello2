@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {DataService} from '../main.service';
 import {Cource} from '../cource';
+import { NgForm} from '@angular/forms';
 
 @Component({
   selector: 'edit',
@@ -19,7 +20,7 @@ import {Cource} from '../cource';
      <form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">
                     <div class="form-group">
                         <label>Название курса</label>
-                        <input class="form-control" value={{this.courceItem.name}} name="name" ngModel required />
+                        <input class="form-control" [(ngModel)]="courceItem.name" name="name" ngModel required />
                     </div>
                     <div class="form-group">
                         <input type="submit" [disabled]="myForm.invalid" class="btn btn-default" value="Отправить" />
@@ -49,4 +50,9 @@ export class EditComponent implements OnDestroy {
       .data
       .subscribe((data: any) => {});
   }  
+  onSubmit(form: NgForm){
+        console.log(form);
+        this.dataService.editData(1,form.value.name,"ww","ee",1000);
+
+    }
 }

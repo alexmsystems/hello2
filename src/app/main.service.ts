@@ -25,4 +25,7 @@ export class DataService{
         this.newId = this.tempCource.id+1;
         this.data.push(new Cource(this.newId,name, courceDate,description,duration));
     }
+    editData(id: number, name: string, courceDate: string, description: string, duration: number ){        
+
+    }
 }
