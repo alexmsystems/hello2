@@ -19,7 +19,7 @@ import { AddComponent } from './add';
 import { LoginComponent } from './login';
 import { NoContentComponent } from './no-content';
 import { ItemComponent } from './items';
-
+import { EditComponent } from './edit';
 
 import {DataService} from './main.service';
 
@@ -45,7 +45,7 @@ type StoreType = {
     AppComponent,
     AddComponent,
     CourcesComponent, 
-
+    EditComponent, 
     LoginComponent,
     ItemComponent,
     NoContentComponent,

@@ -15,6 +15,7 @@ import {Cource} from '../cource';
                     <th>Название курса</th>
                     <th>Дата</th>
                     <th>Ссылка</th>
+                    <th>Редактировать</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +23,7 @@ import {Cource} from '../cource';
                     <td>{{item.name}}</td>
                     <td>{{item.courceDate}}</td>
                     <td><a [routerLink]=" ['./' , item.id] " >Detail {{item.id}}</a></td>
+                    <td><a [routerLink]=" ['./' , item.id, 'edit'] " >Edit {{item.id}}</a></td>
                 </tr>
             </tbody>
         </table>
