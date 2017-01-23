@@ -22,8 +22,8 @@ import {Cource} from '../cource';
                 <tr *ngFor="let item of items">
                     <td>{{item.name}}</td>
                     <td>{{item.courceDate}}</td>
-                    <td><a [routerLink]=" ['./cources' , item.id] " >Detail {{item.id}}</a></td>
-                    <td><a [routerLink]=" ['./cources' , item.id, 'edit'] " >Edit {{item.id}}</a></td>
+                    <td><a [routerLink]=" ['/cources' , item.id] " >Detail {{item.id}}</a></td>
+                    <td><a [routerLink]=" ['/cources' , item.id, 'edit'] " >Edit {{item.id}}</a></td>
                 </tr>
             </tbody>
         </table>

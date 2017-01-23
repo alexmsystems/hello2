@@ -20,14 +20,16 @@ import { LoginComponent } from './login';
 import { NoContentComponent } from './no-content';
 import { ItemComponent } from './items';
 import { EditComponent } from './edit';
-
 import {DataService} from './main.service';
+import { AuthGuard } from './auth.guard';
+
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
   DataService,
+  AuthGuard
 ];
 
 type StoreType = {
@@ -40,7 +42,7 @@ type StoreType = {
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  bootstrap: [ AppComponent ],
+  bootstrap: [ AppComponent],
   declarations: [
     AppComponent,
     AddComponent,
@@ -49,12 +51,12 @@ type StoreType = {
     LoginComponent,
     ItemComponent,
     NoContentComponent,
-
+   
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpModule,   
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

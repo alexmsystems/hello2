@@ -27,7 +27,6 @@ import { NgForm} from '@angular/forms';
                     </div>
                 </form>
   `,
-   providers: [DataService]
 })
 export class EditComponent implements OnDestroy { 
      

@@ -1,63 +1,46 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {DataService} from '../main.service';
+import {Cource} from '../cource';
+import { NgForm} from '@angular/forms';
 
 @Component({
   selector: 'login',
   styles: [`
-  `],
-  template: `
-    <h1>Login</h1>
-    <form action="action_page.php">
-  
-
-    <label><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
-<br>
-    <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-<br>
-    <button type="submit">Login</button>
-    
- 
-</form>
-	
-	
-  `
+        input.ng-touched.ng-invalid {border:solid red 2px;}
+        input.ng-touched.ng-valid {border:solid green 2px;}
+    `],
+    template: `<form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">
+                    <div class="form-group">
+                        <label>Имя пользователя</label>
+                        <input class="form-control" name="name" ngModel required />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" [disabled]="myForm.invalid" class="btn btn-default" value="Отправить" />
+                    </div>
+                </form>`,
+   
 })
-export class LoginComponent {
-  localState: any;
-  constructor(public route: ActivatedRoute) {
+export class LoginComponent 
 
-  }
+{
+  localState: any;  
+  constructor(public route: ActivatedRoute,private dataService: DataService) {
 
-  ngOnInit() {
+  } 
+  
+  ngOnInit() {  
+	
     this.route
       .data
-      .subscribe((data: any) => {
-        // your resolved data from route
-        this.localState = data.yourData;
-      });
+      .subscribe((data: any) => {});
+  }  
 
-    console.log('hello `Login` component');
-    // static data that is bundled
-    // var mockData = require('assets/mock-data/mock-data.json');
-    // console.log('mockData', mockData);
-    // if you're working with mock data you can also use http.get('assets/mock-data/mock-data.json')
-    this.asyncDataWithWebpack();
-  }
-  asyncDataWithWebpack() {
-    // you can also async load mock data with 'es6-promise-loader'
-    // you would do this if you don't want the mock-data bundled
-    // remember that 'es6-promise-loader' is a promise
-    setTimeout(() => {
+ onSubmit(form: NgForm){
+        console.log(form);
+        this.dataService.logIn(form.value.name);
 
-      System.import('../../assets/mock-data/mock-data.json')
-        .then(json => {
-          console.log('async mockData', json);
-          this.localState = json;
-        });
-
-    });
-  }
+    }
 
 }
+
