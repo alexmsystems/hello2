@@ -3,9 +3,7 @@ import {Cource} from './cource';
 
 @Injectable()
 export class DataService{
-    private currenUser: string = "";
-    private newId: number;
-    private tempCource: Cource;
+    private currenUser: string = "";        
     private data: Cource[] = [
         {id: 1 ,  name: "Video Cource 1", courceDate: "01.01.2011", description: "Couurce 1 description", duration: 100},
         {id: 2 ,  name: "Video Cource 2", courceDate: "01.02.2011", description: "Couurce 2 description", duration: 200},
@@ -21,13 +19,26 @@ export class DataService{
         return this.data[id-1];
     }
     addData(name: string, courceDate: string, description: string, duration: number ){        
-
-        this.tempCource = this.data[this.data.length-1];
-        this.newId = this.tempCource.id+1;
-        this.data.push(new Cource(this.newId,name, courceDate,description,duration));
+        var newId: number;
+        var tempCource: Cource;
+        tempCource = this.data[this.data.length-1];
+        newId = tempCource.id+1;
+        this.data.push(new Cource(newId,name, courceDate,description,duration));
     }
     editData(id: number, name: string, courceDate: string, description: string, duration: number ){        
-
+     
+     //this.data[id-1].name = name;
+     
+      var editId: number;
+      var editCource: Cource;
+      var editCources: Cource[];        
+      editCources = this.data.filter((item: any)=> item.id == id);
+      editId = editCources.indexOf(editCources[0]);
+      this.data[editId].name = name;
+      this.data[editId].courceDate = courceDate;
+      this.data[editId].description = description;
+      this.data[editId].duration = duration;
+      
     }
 
     isAuth()

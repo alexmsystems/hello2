@@ -34,8 +34,7 @@ export class EditComponent implements OnDestroy {
     private routeSubscription: Subscription;
     localState: any;
     courceItem: Cource;
-    constructor(public route: ActivatedRoute,private dataService: DataService){
-         
+    constructor(public route: ActivatedRoute,private dataService: DataService){         
         this.routeSubscription = route.params.subscribe(params=>this.id=params['id']);
     }
     ngOnDestroy(){
@@ -51,7 +50,8 @@ export class EditComponent implements OnDestroy {
   }  
   onSubmit(form: NgForm){
         console.log(form);
-        this.dataService.editData(1,form.value.name,"ww","ee",1000);
+        console.log('editData');
+        this.dataService.editData(this.id,form.value.name,"ww","ee",1000);
 
     }
 }
