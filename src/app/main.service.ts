@@ -44,6 +44,16 @@ export class DataService{
       this.data[editId].duration = duration;
       
     }
+    deleteData(id: number)
+    {
+         var deleteId;
+               for (var i in this.data) {
+        if (this.data[i].id == id) {
+            deleteId = i;
+            }
+        }
+         this.data.splice(Number(deleteId), 1);
+    }
 
     isAuth()
     {
