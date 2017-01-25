@@ -14,10 +14,19 @@ import { NgForm} from '@angular/forms';
                     <div class="form-group">
                         <label>Название курса</label>
                         <input class="form-control" name="name" ngModel required />
+                        <br>
+                        <label>Описание курса</label>
+                        <input class="form-control"  name="description" ngModel />                       
+                        <br>
+                        <label>Дата курса</label>
+                        <input class="form-control"  name="courceDate" ngModel />                       
+                        <br>
+                        <label>Продолжительность курса</label>
+                        <input class="form-control"  name="duration" ngModel />    
                     </div>
                     <div class="form-group">
                         <input type="submit" [disabled]="myForm.invalid" class="btn btn-default" value="Отправить" />
-                    </div>
+                    </div>               
                 </form>`,
    
 })
@@ -40,8 +49,7 @@ export class AddComponent
 
  onSubmit(form: NgForm){
         console.log(form);
-        this.dataService.addData(form.value.name,"ww","ee",1000);
-
+        this.dataService.addData(form.value.name,form.value.courceDate,form.value.description,form.value.duration);
     }
 
 }

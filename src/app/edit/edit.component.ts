@@ -21,6 +21,15 @@ import { NgForm} from '@angular/forms';
                     <div class="form-group">
                         <label>Название курса</label>
                         <input class="form-control" [(ngModel)]="courceItem.name" name="name" ngModel required />
+                        <br>
+                        <label>Описание курса</label>
+                        <input class="form-control" [(ngModel)]="courceItem.description" name="description" />                       
+                        <br>
+                        <label>Дата курса</label>
+                        <input class="form-control" [(ngModel)]="courceItem.courceDate" name="courceDate" />                       
+                        <br>
+                        <label>Продолжительность курса</label>
+                        <input class="form-control" [(ngModel)]="courceItem.duration" name="duration" />    
                     </div>
                     <div class="form-group">
                         <input type="submit" [disabled]="myForm.invalid" class="btn btn-default" value="Отправить" />
@@ -51,7 +60,7 @@ export class EditComponent implements OnDestroy {
   onSubmit(form: NgForm){
         console.log(form);
         console.log('editData');
-        this.dataService.editData(this.id,form.value.name,"ww","ee",1000);
+        this.dataService.editData(this.id,form.value.name,form.value.courceDate,form.value.description,form.value.duration);
 
     }
 }
