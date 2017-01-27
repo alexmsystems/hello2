@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 /*
  * Platform and Environment providers/directives/pipes
  */
