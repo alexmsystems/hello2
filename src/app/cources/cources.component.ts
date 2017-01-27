@@ -45,11 +45,16 @@ import {NgForm} from '@angular/forms';
   `],
   template: `
     <h1>Cources</h1>
+    <br><br>
+    {{currentRote}}
+    
 	<table class="table table-striped">
             <thead>
                 <tr>
                     <th>Название курса</th>
                     <th>Дата</th>
+                    <th>Продолжительность</th>
+                    <th>Описание</th>
                     <th>Ссылка</th>
                     <th>Редактировать</th>
                     <th>Удалить</th>
@@ -59,6 +64,8 @@ import {NgForm} from '@angular/forms';
                 <tr *ngFor="let item of items">
                     <td>{{item.name}}</td>
                     <td>{{item.courceDate}}</td>
+                    <td>{{item.duration}}</td>
+                    <td>{{item.description}}</td>
                     <td><a [routerLink]=" ['/cources' , item.id] " >Detail {{item.id}}</a></td>
                     <td><a [routerLink]=" ['/cources' , item.id, 'edit'] " >Edit {{item.id}}</a></td>
                     <td><span (click)="deleteItem(item.id)" >delete</span></td>
@@ -69,9 +76,10 @@ import {NgForm} from '@angular/forms';
 })
 export class CourcesComponent {
   localState: any;
+  currentRote: string;
   items: Cource[] = [];
   constructor(public route: ActivatedRoute,private dataService: DataService) {
-
+       
   }
 
   ngOnInit() {
@@ -83,8 +91,7 @@ export class CourcesComponent {
         // your resolved data from route
         this.localState = data.yourData;
       });
-
-    console.log('hello `Cources` component');
+    
   }
  onSubmit(form: NgForm){
         console.log(form);

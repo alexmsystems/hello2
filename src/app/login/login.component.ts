@@ -1,46 +1,29 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 import {DataService} from '../main.service';
 import {Cource} from '../cource';
-import { NgForm} from '@angular/forms';
+import {NgForm} from '@angular/forms';
+
 
 @Component({
   selector: 'login',
   styles: [`
-        input.ng-touched.ng-invalid {border:solid red 2px;}
-        input.ng-touched.ng-valid {border:solid green 2px;}
     `],
     template: `<form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">
-                    <div class="form-group">
                         <label>Имя пользователя</label>
-                        <input class="form-control" name="name" ngModel required />
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" [disabled]="myForm.invalid" class="btn btn-default" value="Отправить" />
-                    </div>
-                </form>`,
-   
+                        <input  name="name" ngModel required />
+                        <br><label>Пароль</label>
+                        <input type="password" name="pass" ngModel required />
+                        <br><input type="submit" [disabled]="myForm.invalid" value="Отправить" />
+                </form>`
 })
-export class LoginComponent 
-
-{
-  localState: any;  
-  constructor(public route: ActivatedRoute,private dataService: DataService) {
-
-  } 
-  
-  ngOnInit() {  
-	
-    this.route
-      .data
-      .subscribe((data: any) => {});
-  }  
-
+export class LoginComponent {  
+  constructor(private router: Router, private dataService: DataService) {
+}
  onSubmit(form: NgForm){
         console.log(form);
-        this.dataService.logIn(form.value.name);
-
+        this.dataService.logIn(form.value.name,form.value.pass);
+        this.router.navigate(['/cources']);
     }
-
 }
 

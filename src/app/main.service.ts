@@ -62,8 +62,9 @@ export class DataService{
         else
           return true;
     }
-    logIn(name: string)
+    logIn(name: string, pass:string)
     {
-        this.currenUser=name;
+        if (name == "q" && pass == "q")
+        this.currenUser=name;        
     }
 }
