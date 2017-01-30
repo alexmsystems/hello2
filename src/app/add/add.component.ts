@@ -20,7 +20,7 @@ import {NgForm} from '@angular/forms';
                         <input name="courceDate" ngModel />                       
                         <br>
                         <label>Продолжительность курса</label>
-                        <input name="duration" ngModel />
+                        <input name="duration" ngModel required pattern="[0-9]*" />
                         <br>
                         <input type="submit" [disabled]="myForm.invalid" value="Отправить" />                                 
                 </form>`,

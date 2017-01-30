@@ -68,7 +68,10 @@ import {NgForm} from '@angular/forms';
                     <td>{{item.description}}</td>
                     <td><a [routerLink]=" ['/cources' , item.id] " >Detail {{item.id}}</a></td>
                     <td><a [routerLink]=" ['/cources' , item.id, 'edit'] " >Edit {{item.id}}</a></td>
-                    <td><span (click)="deleteItem(item.id)" >delete</span></td>
+                    <td><span (click)="deleteItem(item.id)" >delete</span>
+                    <button type="button" ng-really-message="Are you sure?"
+ng-really-click="deleteItem(item.id)">Delete</button>
+                    </td>
                 </tr>
             </tbody>
         </table> 
@@ -98,7 +101,11 @@ export class CourcesComponent {
         this.dataService.addData(form.value.name,form.value.courceDate,form.value.description,form.value.duration);
     }
 
-    deleteItem(id) {
-      this.dataService.deleteData(id);
+ deleteItem(id) {
+      var r = confirm("Are you sure?");
+      if (r == true) {
+        this.dataService.deleteData(id);
+      } 
+      
     }
 }

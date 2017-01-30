@@ -11,7 +11,7 @@ import {NgForm} from '@angular/forms';
     `],
     template: `<form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">
                         <label>Имя пользователя</label>
-                        <input  name="name" ngModel required />
+                        <input  name="name" ngModel required pattern="[a-zA-Z_]*" />
                         <br><label>Пароль</label>
                         <input type="password" name="pass" ngModel required />
                         <br><input type="submit" [disabled]="myForm.invalid" value="Отправить" />
