@@ -15,7 +15,7 @@ import { NgForm} from '@angular/forms';
      <tr><td>Название курса</td><td>{{courceItem.name}}</td></tr>
      <tr><td>Описание</td><td>{{courceItem.description}}</td></tr>
      <tr><td>Дата</td><td>{{courceItem.courceDate}}</td></tr>
-     <tr><td>Продолжительность</td><td>{{courceItem.duration}}</td></tr>     
+     <tr><td>Продолжительность</td><td>{{courceItem.duration | duration_format}}</td></tr>     
      </table>
      <form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">                    
                         <label>Название курса</label>

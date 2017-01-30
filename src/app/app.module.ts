@@ -22,6 +22,7 @@ import { ItemComponent } from './items';
 import { EditComponent } from './edit';
 import {DataService} from './main.service';
 import { AuthGuard } from './auth.guard';
+import { DurationFormat } from './duration.pipe';
 
 
 // Application wide providers
@@ -50,6 +51,7 @@ type StoreType = {
     EditComponent, 
     LoginComponent,
     ItemComponent,
+    DurationFormat,
     NoContentComponent,
    
   ],

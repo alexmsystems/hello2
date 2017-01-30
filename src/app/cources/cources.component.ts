@@ -64,13 +64,11 @@ import {NgForm} from '@angular/forms';
                 <tr *ngFor="let item of items">
                     <td>{{item.name}}</td>
                     <td>{{item.courceDate}}</td>
-                    <td>{{item.duration}}</td>
+                    <td>{{item.duration | duration_format}}</td>
                     <td>{{item.description}}</td>
                     <td><a [routerLink]=" ['/cources' , item.id] " >Detail {{item.id}}</a></td>
                     <td><a [routerLink]=" ['/cources' , item.id, 'edit'] " >Edit {{item.id}}</a></td>
-                    <td><span (click)="deleteItem(item.id)" >delete</span>
-                    <button type="button" ng-really-message="Are you sure?"
-ng-really-click="deleteItem(item.id)">Delete</button>
+                    <td><span (click)="deleteItem(item.id)" >delete</span>                   
                     </td>
                 </tr>
             </tbody>
