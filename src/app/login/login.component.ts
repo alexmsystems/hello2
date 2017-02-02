@@ -11,7 +11,7 @@ import {NgForm} from '@angular/forms';
     `],
     template: `<form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">
                         <label>Имя пользователя</label>
-                        <input  name="name" ngModel required pattern="[a-zA-Z_]*" />
+                        <input (keypress)="validate($event)"  name="name" ngModel required />
                         <br><label>Пароль</label>
                         <input type="password" name="pass" ngModel required />
                         <br><input type="submit" [disabled]="myForm.invalid" value="Отправить" />
@@ -25,5 +25,13 @@ export class LoginComponent {
         this.dataService.logIn(form.value.name,form.value.pass);
         this.router.navigate(['/cources']);
     }
+  
+ validate(event: any) {
+    const pattern = /[a-zA-Z_]/;
+    let inputChar = String.fromCharCode(event.charCode);   
+    if (!pattern.test(inputChar)) {      
+      event.preventDefault();
+    }
+}
 }
 

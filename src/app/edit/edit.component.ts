@@ -28,27 +28,33 @@ import { NgForm} from '@angular/forms';
                         <input  [(ngModel)]="courceItem.courceDate" name="courceDate" />                       
                         <br>
                         <label>Продолжительность курса</label>
-                        <input  [(ngModel)]="courceItem.duration" name="duration"  required pattern="[0-9]*" />  
+                        <input (keypress)="validate($event)" [(ngModel)]="courceItem.duration" name="duration" required />  
                         <input type="submit" [disabled]="myForm.invalid" value="Отправить" />
                 </form>
   `,
 })
-export class EditComponent implements OnDestroy { 
-     
-    private id: number;
-    private routeSubscription: Subscription; 
-    courceItem: Cource;
-    constructor(private router: Router,public route: ActivatedRoute,private dataService: DataService){         
+export class EditComponent implements OnDestroy {      
+ private id: number;
+ private routeSubscription: Subscription; 
+ courceItem: Cource;
+ constructor(private router: Router,public route: ActivatedRoute,private dataService: DataService){         
         this.routeSubscription = route.params.subscribe(params=>this.id=params['id']);
     }
-    ngOnDestroy(){
+ngOnDestroy(){
         this.routeSubscription.unsubscribe();
     }
-    ngOnInit() {
+ngOnInit() {
 	this.courceItem = this.dataService.getItemData(this.id); 
   }  
-  onSubmit(form: NgForm){
+onSubmit(form: NgForm){
         this.dataService.editData(this.id,form.value.name,form.value.courceDate,form.value.description,form.value.duration);
         this.router.navigate(['/cources']);
     }
+validate(event: any) {
+    const pattern = /[0-9]/;
+    let inputChar = String.fromCharCode(event.charCode);   
+    if (!pattern.test(inputChar)) {      
+          event.preventDefault();
+      }
+    }    
 }

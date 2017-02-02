@@ -24,6 +24,8 @@ import {DataService} from './main.service';
 import { AuthGuard } from './auth.guard';
 import { DurationFormat } from './duration.pipe';
 
+import { ExceptionHandler } from 'angular2/src/core/facade/exceptions';
+import { CustomExceptionHandler } from './exception.handler';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -42,6 +44,8 @@ type StoreType = {
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
+//
+
 @NgModule({
   bootstrap: [ AppComponent],
   declarations: [
@@ -63,7 +67,7 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,     
   ]
 })
 export class AppModule {
