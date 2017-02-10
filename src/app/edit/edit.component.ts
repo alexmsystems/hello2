@@ -11,24 +11,18 @@ import { NgForm} from '@angular/forms';
   `],
   template: `
     <h1>Курс ID = {{id}}</h1>
-     <table>
-     <tr><td>Название курса</td><td>{{courceItem.name}}</td></tr>
-     <tr><td>Описание</td><td>{{courceItem.description}}</td></tr>
-     <tr><td>Дата</td><td>{{courceItem.courceDate}}</td></tr>
-     <tr><td>Продолжительность</td><td>{{courceItem.duration | duration_format}}</td></tr>     
-     </table>
-     <form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">                    
+     <form #myForm="ngForm"  novalidate (ngSubmit)="onSubmit(myForm)">                    
                         <label>Название курса</label>
-                        <input  [(ngModel)]="courceItem.name" name="name" ngModel required />
+                        <input  [(ngModel)]="courceName" name="name" ngModel required />
                         <br>
                         <label>Описание курса</label>
-                        <input  [(ngModel)]="courceItem.description" name="description" />                       
+                        <input  [(ngModel)]="courceDescription" name="description" />                       
                         <br>
                         <label>Дата курса</label>
-                        <input  [(ngModel)]="courceItem.courceDate" name="courceDate" />                       
+                        <input  [(ngModel)]="courceDate" name="courceDate" />                       
                         <br>
                         <label>Продолжительность курса</label>
-                        <input (keypress)="validate($event)" [(ngModel)]="courceItem.duration" name="duration" required />  
+                        <input (keypress)="validate($event)" [(ngModel)]="courceDuration" name="duration" required />  
                         <input type="submit" [disabled]="myForm.invalid" value="Отправить" />
                 </form>
   `,
@@ -37,6 +31,11 @@ export class EditComponent implements OnDestroy {
  private id: number;
  private routeSubscription: Subscription; 
  courceItem: Cource;
+ courceName: string;
+ courceDescription: string;
+ courceDate: string;
+ courceDuration: number;
+
  constructor(private router: Router,public route: ActivatedRoute,private dataService: DataService){         
         this.routeSubscription = route.params.subscribe(params=>this.id=params['id']);
     }
@@ -45,8 +44,12 @@ ngOnDestroy(){
     }
 ngOnInit() {
 	this.courceItem = this.dataService.getItemData(this.id); 
-  }  
-onSubmit(form: NgForm){
+    this.courceName = this.courceItem.name; 
+    this.courceDescription = this.courceItem.description;
+    this.courceDate = this.courceItem.courceDate; 
+    this.courceDuration = this.courceItem.duration; 
+}  
+onSubmit(form: any){
         this.dataService.editData(this.id,form.value.name,form.value.courceDate,form.value.description,form.value.duration);
         this.router.navigate(['/cources']);
     }

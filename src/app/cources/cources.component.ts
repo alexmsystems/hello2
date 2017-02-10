@@ -82,7 +82,17 @@ export class CourcesComponent {
   constructor(public route: ActivatedRoute,private dataService: DataService) {
        
   }
+/*
+ngOnInit() {
 
+    this.route.url.subscribe(urlSegment => {
+
+            console.log(urlSegment)
+
+    });
+
+}
+*/
   ngOnInit() {
 	  
 	this.items = this.dataService.getData();
@@ -92,6 +102,12 @@ export class CourcesComponent {
         // your resolved data from route
         this.localState = data.yourData;
       });
+
+       this.route.url.subscribe(urlSegment => {
+
+            this.currentRote = urlSegment.toString();
+
+    });
     
   }
  onSubmit(form: NgForm){
