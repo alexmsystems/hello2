@@ -1,3 +1,4 @@
+/*
 import {
   inject,
   TestBed
@@ -20,3 +21,4 @@ describe('App', () => {
   }));
 
 });
+*/
