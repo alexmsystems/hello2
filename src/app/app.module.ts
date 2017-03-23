@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import {NgRedux,NgReduxModule} from 'ng2-redux'
+import {IAppState, rootReducer, INITIAL_STATE} from './store'
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -62,7 +64,8 @@ type StoreType = {
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
-    HttpModule,   
+    HttpModule, 
+    NgReduxModule,  
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
@@ -71,7 +74,11 @@ type StoreType = {
   ]
 })
 export class AppModule {
-  constructor(public appRef: ApplicationRef, public appState: AppState) {}
+  constructor(public appRef: ApplicationRef, public appState: AppState, ngRedux: NgRedux<IAppState>) {
+
+    ngRedux.configureStore(rootReducer,INITIAL_STATE);
+
+  }
 
   hmrOnInit(store: StoreType) {
     if (!store || !store.state) return;

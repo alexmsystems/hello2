@@ -3,6 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import {DataService} from '../main.service';
 import {Cource} from '../cource';
 import {NgForm} from '@angular/forms';
+import {NgRedux} from 'ng2-redux';
+import {IAppState} from '../store'
+import {INCREMENT} from '../actions'
+
+
 
 @Component({
   selector: 'cources',
@@ -79,9 +84,15 @@ export class CourcesComponent {
   localState: any;
   currentRote: string;
   items: Cource[] = [];
-  constructor(public route: ActivatedRoute,private dataService: DataService) {
-       
+  constructor(public route: ActivatedRoute,private dataService: DataService, private ngRedux: NgRedux<IAppState>) {       
   }
+
+increment()
+{
+
+  this.ngRedux.dispatch({ type: INCREMENT})
+}
+
 /*
 ngOnInit() {
 
